@@ -68,4 +68,17 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    // Nuevo método para actualizar a un usuario
+    public Usuario actualizarUsuario(Long id, String nombre, String contrasena, String rol) {
+        Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
+        if (usuarioExistente.isPresent()) {
+            Usuario existe = usuarioExistente.get();
+            existe.setNombre(nombre);
+            existe.setContrasena(contrasena);
+            existe.setRol(rol);
+            usuarioRepository.save(existe);
+        }
+        return null;
+    }
+
 }
