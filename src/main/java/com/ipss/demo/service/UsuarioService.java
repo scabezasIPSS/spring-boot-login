@@ -81,4 +81,14 @@ public class UsuarioService {
         return null;
     }
 
+    // Eliminar Usuario
+    public boolean eliminarUsuario(Long id) {
+        Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
+        if (usuarioExistente.isPresent()) {
+            usuarioRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }

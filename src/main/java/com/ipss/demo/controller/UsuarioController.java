@@ -1,6 +1,7 @@
 package com.ipss.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,15 @@ public class UsuarioController {
     public Usuario actualizarUsuario(@PathVariable Long id, @RequestParam String nombre,
             @RequestParam String contrasena, @RequestParam String rol) {
         return usuarioService.actualizarUsuario(id, nombre, contrasena, rol);
+    }
+
+    @DeleteMapping("/{id}")
+    public String eliminarUsuario(@PathVariable Long id) {
+        boolean eliminado = usuarioService.eliminarUsuario(id);
+        if (eliminado) {
+            return "Usuario eliminado exitosamente";
+        }
+        return "Usuario no encontrado";
     }
 
 }
