@@ -16,6 +16,17 @@ public class Usuario {
     private String contrasena;
     private String rol; // "Comensal" o "Administrador"
 
+    public Usuario(){
+
+    }
+
+    public Usuario(Long id, String nombre, String contrasena, String rol){
+        this.id = id;
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+        this.rol = rol;
+    }
+
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
